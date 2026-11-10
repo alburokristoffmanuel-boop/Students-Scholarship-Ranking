@@ -103,3 +103,24 @@ public class ApplicantRegistry {
         return -1;
     }
 
+    private void ensureCapacity() {
+        if (count < applicants.length) {
+            return;
+        }
+        ScholarshipApplicant[] grown = new ScholarshipApplicant[applicants.length * 2];
+        for (int i = 0; i < count; i++) {
+            grown[i] = applicants[i];
+        }
+        applicants = grown;
+    }
+
+    private static boolean containsIgnoreCase(String source, String part) {
+        int lastStart = source.length() - part.length();
+        for (int i = 0; i <= lastStart; i++) {
+            if (source.regionMatches(true, i, part, 0, part.length())) {
+                return true;
+            }
+        }
+        return false;
+    }
+}
