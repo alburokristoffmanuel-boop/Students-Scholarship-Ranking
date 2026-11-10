@@ -1,9 +1,39 @@
 
 package student.shocalarship.ranking;
-
+import java.awt.*;
+import java.util.ArrayList;
+import java.util.Comparator;
+import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.border.EmptyBorder;
 
 public class StudentsSchoolarshipRanking extends javax.swing.JFrame {
-    
+    static class Student {
+        String name;
+        String studentID;
+        double grade;
+        double income;
+        double activities;
+        double totalScore;
+
+        Student(String name, String studentID,
+                double grade, double income, double activities) {
+
+            this.name = name;
+            this.studentID = studentID;
+            this.grade = grade;
+            this.income = income;
+            this.activities = activities;
+
+            // COMPUTE TOTAL SCORE
+            double incomeScore = Math.max(0, 100 - (income / 300));
+
+            this.totalScore =
+                    (grade * 0.60) +
+                    (incomeScore * 0.25) +
+                    (activities * 0.15);
+        }
+    }
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(StudentsSchoolarshipRanking.class.getName());
 
     
