@@ -149,4 +149,20 @@ public abstract class ScholarshipApplicant {
         return name;
     }
 
-   
+    private static String validateId(String studentId) {
+        if (studentId == null) {
+            throw new IllegalArgumentException("Student ID is required.");
+        }
+        String id = studentId.trim();
+        if (id.length() < 3 || id.length() > 20) {
+            throw new IllegalArgumentException("Student ID must be 3 to 20 characters.");
+        }
+        for (int i = 0; i < id.length(); i++) {
+            char c = id.charAt(i);
+            if (!(Character.isLetterOrDigit(c) || c == '-')) {
+                throw new IllegalArgumentException(
+                        "Student ID may contain only letters, digits, and hyphens.");
+            }
+        }
+        return id;
+    }
