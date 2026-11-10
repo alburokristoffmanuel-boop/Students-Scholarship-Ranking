@@ -115,4 +115,38 @@ public abstract class ScholarshipApplicant {
 
     public abstract String getScholarType();
 
- 
+    @Override
+    public String toString() {
+        return getScholarType() + " [" + studentId + "] " + studentName;
+    }
+
+    private static int compareDouble(double left, double right) {
+        double gap = left - right;
+        if (gap > 0.0000001) {
+            return 1;
+        }
+        if (gap < -0.0000001) {
+            return -1;
+        }
+        return 0;
+    }
+
+    private static String validateName(String studentName) {
+        if (studentName == null) {
+            throw new IllegalArgumentException("Student name is required.");
+        }
+        String name = studentName.trim();
+        if (name.length() < 2) {
+            throw new IllegalArgumentException("Student name must be at least 2 characters.");
+        }
+        for (int i = 0; i < name.length(); i++) {
+            char c = name.charAt(i);
+            if (!(Character.isLetter(c) || c == ' ' || c == '-' || c == '\'' || c == '.')) {
+                throw new IllegalArgumentException(
+                        "Student name may contain only letters, spaces, hyphens, apostrophes, and periods.");
+            }
+        }
+        return name;
+    }
+
+  
