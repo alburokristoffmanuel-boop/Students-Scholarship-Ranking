@@ -61,4 +61,58 @@ public abstract class ScholarshipApplicant {
         this.activityPoints = validateActivities(activityPoints);
     }
 
+    /**
+     * Lower income produces a higher need score, clamped to 0..100.
+     * An income of 0 scores 100. An income of 30,000 or more scores 0.
+     */
+    protected final double incomeNeedScore() {
+        double score = 100.0 - (monthlyFamilyIncome / 300.0);
+        if (score < 0) {
+            return 0;
+        }
+        if (score > 100) {
+            return 100;
+        }
+        return score;
+    }
 
+    protected final double weightedScore(double averageWeight, double incomeWeight, double activityWeight) {
+        return (generalAverage * averageWeight)
+                + (incomeNeedScore() * incomeWeight)
+                + (activityPoints * activityWeight);
+    }
+
+    protected final String statusFor(double qualifiedAt, double waitlistAt) {
+        double score = computeTotalScore();
+        if (score >= qualifiedAt) {
+            return "Qualified";
+        }
+        if (score >= waitlistAt) {
+            return "Waitlisted";
+        }
+        return "Not Qualified";
+    }
+
+    /**
+     * Negative when this applicant should be listed above the other one.
+     * Order: higher total score, then higher average, then lower student ID.
+     */
+    public final int compareForRanking(ScholarshipApplicant other) {
+        int byScore = compareDouble(other.computeTotalScore(), this.computeTotalScore());
+        if (byScore != 0) {
+            return byScore;
+        }
+        int byAverage = compareDouble(other.generalAverage, this.generalAverage);
+        if (byAverage != 0) {
+            return byAverage;
+        }
+        return this.studentId.compareToIgnoreCase(other.studentId);
+    }
+
+    public abstract double computeTotalScore();
+
+    public abstract String determineStatus();
+
+    public abstract String getScholarType();
+
+ 
