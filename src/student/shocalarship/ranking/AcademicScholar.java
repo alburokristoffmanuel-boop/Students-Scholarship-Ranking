@@ -16,4 +16,19 @@ public class AcademicScholar extends ScholarshipApplicant {
         super(studentName, studentId, generalAverage, monthlyFamilyIncome, activityPoints);
     }
 
+    @Override
+    public double computeTotalScore() {
+        return weightedScore(AVERAGE_WEIGHT, INCOME_WEIGHT, ACTIVITY_WEIGHT);
+    }
+
+    @Override
+    public String determineStatus() {
+        return statusFor(QUALIFIED_AT, WAITLIST_AT);
+    }
+
+    @Override
+    public String getScholarType() {
+        return "Academic Scholar";
+    }
 }
+
