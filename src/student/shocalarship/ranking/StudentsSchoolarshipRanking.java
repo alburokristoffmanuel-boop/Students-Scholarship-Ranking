@@ -120,7 +120,7 @@ public class StudentsSchoolarshipRanking extends javax.swing.JFrame {
         lblStudentName.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lblStudentName.setText("Students Name");
 
-        jLabel13.setFont(new java.awt.Font("Segoe UI Historic", 0, 24)); // NOI18N
+        jLabel13.setFont(new java.awt.Font("Segoe UI Emoji", 1, 24)); // NOI18N
         jLabel13.setText("Studdents Scholarship Ranking");
 
         lblStudentId.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -265,10 +265,10 @@ public class StudentsSchoolarshipRanking extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel17))
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(322, 322, 322)
-                .addComponent(btnDisplayRanking, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(286, 286, 286)
+                .addComponent(btnDisplayRanking, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(69, 69, 69)
-                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
