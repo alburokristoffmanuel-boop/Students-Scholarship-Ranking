@@ -61,4 +61,45 @@ public class ApplicantRegistry {
     /**
      * 1-based rank using the same ordering as the sort. Does not rearrange the array.
      */
-   
+    public int rankOf(ScholarshipApplicant target) {
+        int better = 0;
+        for (int i = 0; i < count; i++) {
+            if (applicants[i] != target && applicants[i].compareForRanking(target) < 0) {
+                better++;
+            }
+        }
+        return better + 1;
+    }
+
+    /**
+     * Linear search by student ID or name. Fills matches and returns how many were found.
+     */
+    public int search(String keyword, ScholarshipApplicant[] matches) {
+        if (keyword == null || matches == null) {
+            throw new IllegalArgumentException("Search needs a keyword and a result array.");
+        }
+        String key = keyword.trim();
+        if (key.length() == 0) {
+            return 0;
+        }
+        int found = 0;
+        for (int i = 0; i < count && found < matches.length; i++) {
+            ScholarshipApplicant applicant = applicants[i];
+            if (containsIgnoreCase(applicant.getStudentId(), key)
+                    || containsIgnoreCase(applicant.getStudentName(), key)) {
+                matches[found] = applicant;
+                found++;
+            }
+        }
+        return found;
+    }
+
+    private int indexOfId(String studentId) {
+        for (int i = 0; i < count; i++) {
+            if (applicants[i].getStudentId().equalsIgnoreCase(studentId)) {
+                return i;
+            }
+        }
+        return -1;
+    }
+
