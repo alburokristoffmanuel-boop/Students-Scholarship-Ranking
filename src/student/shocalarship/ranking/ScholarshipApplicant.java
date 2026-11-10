@@ -21,4 +21,44 @@ public abstract class ScholarshipApplicant {
         this.activityPoints = validateActivities(activityPoints);
     }
 
+    public String getStudentName() {
+        return studentName;
+    }
+
+    public final void setStudentName(String studentName) {
+        this.studentName = validateName(studentName);
+    }
+
+    public String getStudentId() {
+        return studentId;
+    }
+
+    public final void setStudentId(String studentId) {
+        this.studentId = validateId(studentId);
+    }
+
+    public double getGeneralAverage() {
+        return generalAverage;
+    }
+
+    public final void setGeneralAverage(double generalAverage) {
+        this.generalAverage = validateAverage(generalAverage);
+    }
+
+    public double getMonthlyFamilyIncome() {
+        return monthlyFamilyIncome;
+    }
+
+    public final void setMonthlyFamilyIncome(double monthlyFamilyIncome) {
+        this.monthlyFamilyIncome = validateIncome(monthlyFamilyIncome);
+    }
+
+    public double getActivityPoints() {
+        return activityPoints;
+    }
+
+    public final void setActivityPoints(double activityPoints) {
+        this.activityPoints = validateActivities(activityPoints);
+    }
+
 
