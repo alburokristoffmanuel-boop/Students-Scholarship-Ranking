@@ -61,17 +61,4 @@ public class ApplicantRegistry {
     /**
      * 1-based rank using the same ordering as the sort. Does not rearrange the array.
      */
-    public int rankOf(ScholarshipApplicant target) {
-        int better = 0;
-        for (int i = 0; i < count; i++) {
-            if (applicants[i] != target && applicants[i].compareForRanking(target) < 0) {
-                better++;
-            }
-        }
-        return better + 1;
-    }
-
-    /**
-     * Linear search by student ID or name. Fills matches and returns how many were found.
-     */
-    
+   
